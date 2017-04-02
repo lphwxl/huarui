@@ -1,0 +1,57 @@
+           <{include file='../public/_header.html'}>
+            <{if !isset($smarty.get.id)}>
+                <div class="m_left">
+                    <p class="m_detail"><a href="<{$data[0]['href']}>&sid=<{$data[0]['id']}>&a=1">查看详情 >> </a></p>
+                    <h3><{$data[0]['name']}></h3>
+                    <div class="m_l_content">
+                        <h4>企业文化</h4>
+                        <{if isset($content)}>
+                            <p class="detail">
+                                <{nl2br($content[1]['content'])}>
+                            </p>
+                        <{/if}>
+                        <h4>企业概况</h4>
+                        <{if isset($content)}>
+                            <p class="detail">
+                                <{$content[0]['content']}>
+                            </p>
+                        <{/if}>
+                    </div>
+                </div>
+            <!-- m_center start -->
+                <div class="m_center">
+                    <p class="m_detail"><a href="<{$data[1]['href']}>&sid=<{$data[1]['id']}>">查看详情 >> </a></p>
+                    <h3><{$data[1]['name']}></h3>
+                    <div class="m_l_content">
+                        <h4>新闻列表</h4>
+                        <{if isset($news)}>
+                            <{foreach $news as $v}>
+
+                                <p class="detail">
+                                    <span class="bg_icon"></span>
+                                    <{($v['title'])}>
+                                </p>
+                            <{/foreach}>
+                        <{/if}>
+                    </div>
+                </div>
+            <!-- end m_center -->
+            <!-- m_right start -->
+                <div class="m_right">
+                    <p class="m_detail"><a href="<{$data[2]['href']}>&sid=<{$data[2]['id']}>">查看详情 >> </a></p>
+                    <h3><{$data[2]['name']}></h3>
+                    <div class="m_l_content">
+                        <h4>招贤纳士</h4>
+                        <{if isset($hum)}>
+                            <{foreach $hum as $v}>
+                        <p class="detail">
+                            <span class="bg_icon"></span>
+                            <{($v['title'])}>(<{$v['position']}>)
+                        </p>
+                        <{/foreach}>
+                        <{/if}>
+                    </div>
+                </div>
+            <!-- end m_right -->
+            <{/if}>
+           <{include file='../public/_footer.html'}>

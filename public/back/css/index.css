@@ -1,0 +1,139 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+html{
+    width:100%;
+    height: 100%;
+    overflow: hidden;
+}
+body {
+    width:100%;
+    height: 100%;
+   /* overflow: hidden;*/
+    font-size: 14px;
+    font-family: "微软雅黑";
+    background: url('../images/m_bg.gif') repeat-x;
+}
+a{text-decoration:none;}
+ul{
+    list-style: none;
+}
+/* container start */
+.container{
+    width:1000px;
+    height:800px;
+    background: url('../images/login_bg.gif');
+   margin:0 auto;
+}
+.c_login{
+    padding:257px 0 0 279px;
+}
+.c_login h1{
+    font-size:14px;
+    font-weight: 600;
+    width:440px;
+    height:38px;
+    text-align: center;
+    line-height: 38px;
+    color:#fff;
+    font-family: '宋体';
+}
+.c_info{
+    margin:18px 0 0 130px;
+}
+.c_info ul li label{
+    display: inline-block;
+    width:48px;
+    height:26px;
+    line-height: 26px;
+    text-align: right;
+    vertical-align: middle;
+}
+.c_info ul li input{
+    width:160px;
+    height:28px;
+    outline:none;
+    border:1px solid #c6def3;
+    margin-left: 10px;
+    padding-left: 6px;
+    box-shadow:0 0 2px gray;
+}
+.c_info ul li img{
+    vertical-align: middle;
+    border-radius:4px;
+    cursor: pointer;
+}
+.c_info ul li input#code{
+    width:80px;
+}
+.c_info ul li p.tip{
+    height:16px;
+    font-size:12px;
+    color:red;
+    opacity:0;
+    padding-left:60px;
+}
+.btn{
+    width:78px;
+    height:30px;
+    color:#fff;
+    outline:none;
+    border:none;
+    cursor:pointer;
+    margin-left:58px;
+    background: url('../images/btn03.gif');
+}
+/* end container */
+
+/* 登录成功 开始 */
+/* 遮罩层 */
+.success{
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,.6);
+    opacity:0.6;
+    filter:alpha(opacity=60);
+    position:absolute;
+    top:0;
+    left:0;
+    z-index:1;
+}
+/* 提示信息 */
+.s_time{
+    top:50%;
+    left:50%;
+    margin:-60px -220px;
+    width:440px;
+    height:236px;
+    background:#fff;
+    position:absolute;
+    z-index:12;
+    text-align:center;
+    border-radius:4px;
+    box-shadow:0 0 6px gray;
+}
+.s_time h2{
+    color:red;
+    margin-top:30px;
+    line-height:46px;
+    font-weight: 500;
+}
+.s_time p{
+    line-height: 36px;
+    font-size:16px;
+}
+.s_time p span,.s_time p a{
+    color:red;
+}
+.s_time p span#second{
+    font-style:italic;
+    font-weight: bold;
+}
+.s_time p a{
+    font-size:18px;
+}
+.success,.s_time{
+    display:none;
+}
+/* 登陆成功 结束*/

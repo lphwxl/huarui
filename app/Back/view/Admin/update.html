@@ -1,0 +1,107 @@
+<{include file='../public/_header.html'}>
+<{if $smarty.get.sid eq '1'}>
+<{if $smarty.get.a eq '1'}>
+<div class="m-c-news">
+    <div class="info" id="info">
+        <form action="?p=back&c=admin&m=handle&sid=<{$smarty.get.sid}>&a=<{$smarty.get.a}>&id=<{$smarty.get.id}>" method="post">
+            <ul id="info-form">
+                <li>企业简介</li>
+                <li><label>内容:</label><textarea  name="content" id="cont">
+
+                    <{foreach  $content as $k=>$v}>
+                    <{if $content[$k]['cid'] eq '1'}>
+                    <{$content[$k]['content']}>
+                    <{/if}>
+                    <{/foreach}>
+                </textarea>
+                    <script>var content  = UE.getEditor('cont'); </script>
+                </li>
+                <li>
+                    <input type="hidden" name="cid" value="1"/>
+                </li>
+                <li>
+                    <input type="submit" name='sub' value="提交" id="sub"/>
+                </li>
+            </ul>
+
+        </form>
+    </div>
+</div>
+<{elseif $smarty.get.a eq '2'}>
+<div class="m-c-news">
+    <div class="info" id="info">
+        <form action="?p=back&c=admin&m=handle&sid=<{$smarty.get.sid}>&a=<{$smarty.get.a}>&id=<{$smarty.get.id}>" method="post">
+            <ul id="info-form">
+                <li>企业文化</li>
+                <li><label>内容:</label>
+                    <textarea  name="content" id="culture">
+                        <{foreach  $content as $k=>$v}>
+                            <{if $content[$k]['cid'] eq '2'}>
+                                <{$content[$k]['content']}>
+                            <{/if}>
+                        <{/foreach}>
+                </textarea>
+                    <script>var culture  = UE.getEditor('culture'); </script>
+                </li>
+                <li>
+                    <input type="hidden" name="cid" value="2"/>
+                </li>
+                <li>
+                    <input type="submit" name='sub' value="提交" id="sub"/>
+                </li>
+            </ul>
+
+        </form>
+    </div>
+</div>
+<{elseif $smarty.get.a eq '3'}>
+<p>暂无操作</p>
+<{/if}>
+<{elseif $smarty.get.sid eq '2'}>
+<div class="m-c-news">
+    <div class="info" id="info">
+        <form action="?p=back&c=admin&m=handle&sid=<{$smarty.get.sid}>&id=<{$smarty.get.id}>" method="post">
+            <ul id="info-form">
+                <li><label>新闻标题:</label><input type="text" name="title" value="<{$content[0]['title']}>"/></li>
+
+                <li><label>信息来源:</label><input type="text" name="author" value="<{$content[0]['author']}>"/></li>
+                <li><label>新闻内容:</label><textarea  name="content" id="news_con"><{$content[0]['content']}></textarea></li>
+                <script>var news_con  = UE.getEditor('news_con'); </script>
+                <li>
+                    <select name="isdel" id="isdel">
+                        <option>是否可见</option>
+
+                        <option value="1" <{if $content[0]['isdel'] eq '1'}>selected="selected"<{/if}>>是</option>
+                        <option value="0" <{if $content[0]['isdel'] eq '0'}>selected="selected"<{/if}>>否</option>
+                    </select>
+                </li>
+                <li>
+                    <input type="submit" name='sub'value="提交" id="sub"/>
+                </li>
+            </ul>
+
+        </form>
+    </div>
+</div>
+<{else}>
+<div class="m-c-news">
+    <div class="info" id="info">
+        <form action="?p=back&c=admin&m=handle&sid=<{$smarty.get.sid}>&id=<{$smarty.get.id}>" method="post">
+            <ul id="info-form">
+                <li><label>标题:</label><input type="text" name="title" value="<{$content[0]['title']}>"/></li>
+                <li><label>人数:</label><input type="text" name="number" value="<{$content[0]['number']}>"/></li>
+                <li><label>职位:</label><input type="text" name="position" value="<{$content[0]['position']}>"/></li>
+                <li><label>工作职责:</label><textarea  name="work" id="work"><{$content[0]['work']}></textarea></li>
+                <script>var work  = UE.getEditor('work'); </script>
+                <li><label>任职要求:</label><textarea  name="requirements" id="requirements"><{$content[0]['requirements']}></textarea></li>
+                <script>var requirements  = UE.getEditor('requirements'); </script>
+                <li>
+                    <input type="submit" name='sub'value="提交" id="sub"/>
+                </li>
+            </ul>
+        </form>
+    </div>
+    <{/if}>
+
+
+    <{include file='../public/_footer.html'}>

@@ -1,0 +1,68 @@
+<{include file='../public/_header.html'}>
+        <{if isset($smarty.get.id)}>
+        <{if isset($content)}>
+<div class="m-c-news">
+    <div class="info" id="info">
+        <form action="?p=back&c=product&m=handle&sid=<{$smarty.get.sid}>&id=<{$smarty.get.id}>" method="post" enctype="multipart/form-data">
+            <ul id="info-form">
+                <li><label>产品名称:</label><input type="text" name="title" value="<{$content[0]['title']}>"/></li>
+                <li><label>描述:</label><textarea  name="content" id="desc"><{$content[0]['content']}></textarea></li>
+                <script>var desc  = UE.getEditor('desc');</script>
+                <li class="upload"><label>图片说明:</label><div id="upload1" class="upload-btn">上传</div><input type="file" multiple='multiple' name="files_d1[]" id="file1"/></li>
+                <li class="upload"><label>产品原图:</label></label><div id="upload2" class="upload-btn">上传</div><input type="file" multiple='multiple' name="files_d2[]" id="file2"/></li>
+                <li>
+                    <select name="isdel" id="isdel">
+                        <option>是否可见</option>
+                        <option value="1" <{if $content[0]['isdel'] eq '1'}>selected<{/if}>>是</option>
+                        <option value="0" <{if $content[0]['isdel'] eq '0'}>selected<{/if}>>否</option>
+                    </select>
+                </li>
+                <li>
+                    <select name="previmg" id="previmg">
+                        <option>是否覆盖原图</option>
+                        <option value="1">否</option>
+                        <option value="0">是</option>
+                    </select>
+                </li>
+                <li>
+                    <input type="submit" name='sub'value="提交" id="sub"/>
+                </li>
+            </ul>
+        </form>
+    </div>
+    <{/if}>
+    <{else}>
+<div class="m-c-news">
+    <div class="info" id="info">
+        <form action="?p=back&c=product&m=add&sid=<{$smarty.get.sid}>" method="post" enctype="multipart/form-data">
+            <ul id="info-form">
+                <li><label>产品名称:</label><input type="text" name="title" /></li>
+                <li><label>描述:</label><textarea  name="content" id="desc"></textarea></li>
+                <script>var desc  = UE.getEditor('desc');</script>
+                <li class="upload"><label>图片说明:</label><div id="upload1" class="upload-btn">上传</div><input type="file" multiple='multiple' name="files_d1[]" id="file1"/></li>
+                <li class="upload"><label>产品原图:</label></label><div id="upload2" class="upload-btn">上传</div><input type="file" multiple='multiple' name="files_d2[]" id="file2"/></li>
+                <li>
+                    <select name="isdel" id="isdel">
+                        <option>是否可见</option>
+                        <option value="1">是</option>
+                        <option value="0">否</option>
+                    </select>
+               </li>
+                <li>
+                    <input type="submit" name='sub'value="提交" id="sub"/>
+                </li>
+            </ul>
+        </form>
+    </div>
+    <{/if}>
+    <div class="container" id="container">
+        <div class="con-top" id="con-top">
+            <button id="but-one" class="btn-info">选择文件</button>
+            <button id="but-two" class="btn-info" data-id="&id=1" disabled="disabled">上传文件</button>
+            <button id="close" class="btn-info">关闭</button>
+        </div>
+        <div class="nav-file" id="nav-file">
+
+        </div>
+    </div>
+    <{include file='../public/_footer.html'}>

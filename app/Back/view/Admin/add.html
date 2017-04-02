@@ -1,0 +1,92 @@
+<{include file='../public/_header.html'}>
+<{if $smarty.get.sid eq '1'}>
+<{if $smarty.get.a eq '1'}>
+<div class="m-c-news">
+    <div class="info" id="info">
+        <form action="?p=back&c=admin&m=add&sid=<{$smarty.get.sid}>&a=<{$smarty.get.a}>" method="post">
+            <ul id="info-form">
+                <li>企业简介</li>
+                <li><label>内容:</label><textarea  name="content" id="cont"></textarea>
+                    <script>var cont  = UE.getEditor('cont'); </script>
+                </li>
+
+                <li>
+                    <input type="hidden" name="cid" value="1"/>
+                </li>
+                <li>
+                    <input type="submit" name='sub' value="提交" id="sub"/>
+                </li>
+            </ul>
+
+        </form>
+    </div>
+</div>
+<{elseif $smarty.get.a eq '2'}>
+<div class="m-c-news">
+    <div class="info" id="info">
+        <form action="?p=back&c=admin&m=add&sid=<{$smarty.get.sid}>&a=<{$smarty.get.a}>" method="post">
+            <ul id="info-form">
+                <li>企业文化</li>
+                <li><label>内容:</label><textarea  name="content" id="culture"></textarea></li>
+                <script>var culture  = UE.getEditor('culture'); </script>
+                <li>
+                    <input type="hidden" name="cid" value="2"/>
+                </li>
+                <li>
+                    <input type="submit" name='sub' value="提交" id="sub"/>
+                </li>
+            </ul>
+
+        </form>
+    </div>
+</div>
+<{elseif $smarty.get.a eq '3'}>
+     <p>暂无操作</p>
+<{/if}>
+<{elseif $smarty.get.sid eq '2'}>
+<div class="m-c-news">
+    <div class="info" id="info">
+        <form action="?p=back&c=admin&m=add&sid=<{$smarty.get.sid}>" method="post">
+            <ul id="info-form">
+                <li><label>新闻标题:</label><input type="text" name="title" /></li>
+
+                <li><label>信息来源:</label><input type="text" name="author"/></li>
+                <li><label>新闻内容:</label><textarea  name="content" id="news_con"></textarea></li>
+                <script>var content  = UE.getEditor('news_con'); </script>
+                <li>
+                    <select name="isdel" id="isdel">
+                        <option>是否可见</option>
+                        <option value="1">是</option>
+                        <option value="0">否</option>
+                    </select>
+                </li>
+                <li>
+                    <input type="submit" name='sub'value="提交" id="sub"/>
+                </li>
+            </ul>
+
+        </form>
+    </div>
+</div>
+<{else}>
+<div class="m-c-news">
+    <div class="info" id="info">
+        <form action="?p=back&c=admin&m=add&sid=<{$smarty.get.sid}>" method="post">
+            <ul id="info-form">
+                <li><label>标题:</label><input type="text" name="title" /></li>
+                <li><label>人数:</label><input type="text" name="number"/></li>
+                <li><label>职位:</label><input type="text" name="position"/></li>
+                <li><label>工作职责:</label><textarea  name="work" id="work1"></textarea></li>
+                <script>var content  = UE.getEditor('work1'); </script>
+                <li><label>任职要求:</label><textarea  name="requirements" id="requirements1"></textarea></li>
+                <script>var content  = UE.getEditor('requirements1'); </script>
+                <li>
+                    <input type="submit" name='sub'value="提交" id="sub"/>
+                </li>
+            </ul>
+        </form>
+</div>
+<{/if}>
+
+
+<{include file='../public/_footer.html'}>

@@ -1,0 +1,33 @@
+<{include file='../public/_header.html'}>
+
+<div class="m-c-news">
+    <form action="?p=back&c=product&m=dele&sid=<{$smarty.get.sid}>" method="post">
+        <p id="add"><a href="?p=back&c=product&m=add&sid=<{$smarty.get.sid}>">添加</a>
+            <{if !empty($content)}>
+            <button type="submit" id="btn">批量删除</button></p>
+
+        <table id="tab">
+            <tr><td class="ids">编号</td><td>产品名称</td><td>产品简介</td><td class="a-td"><span>操作</span></td></tr>
+            <{foreach $content as $k=>$v}>
+            <tr><td class="ids"><input type="checkbox" name='ids[]' value="<{$v['id']}>"/><{$v['id']}></td>
+                <td><{$v['title']}></td>
+                <{if !empty($v['content'])}>
+                    <td><{mb_substr($v['content'],0,65)}>...</td>
+                    <{else}>
+                    <td>暂无数据</td>
+                <{/if}>
+                <td class="a-td"><span><a href="?p=back&c=product&m=handle&sid=<{$smarty.get.sid}>&id=<{$v['id']}>">修改</a></span><span><a href="?p=back&c=product&m=dele&sid=<{$smarty.get.sid}>&id=<{$v['id']}>">删除</a></span></td></tr>
+            <{/foreach}>
+        </table>
+        <{/if}>
+    </form>
+	<{if isset($html)}>
+    <table id="page">
+        <tr style="text-align:center;"><td colspan="3"><{$html['msg']}></td></tr>
+
+    </table>
+	<{/if}>
+
+</div>
+
+<{include file='../public/_footer.html'}>

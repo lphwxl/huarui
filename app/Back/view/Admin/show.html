@@ -1,0 +1,107 @@
+<{include file='../public/_header.html'}>
+<{if $smarty.get.sid eq '1'}>
+    <{if $smarty.get.a eq '1'}>
+        <div class="m-c-news">
+            <form action="">
+                <h3>企业简介</h3>
+                <p id="add"><a href="?p=back&c=admin&m=add&sid=<{$smarty.get.sid}>&a=<{$smarty.get.a}>">添加</a></p>
+                <{if !empty($content)}>
+                <table id="tab">
+                    <tr><td class="ids">编号</td><td>内容</td><td class="a-td"><span>操作</span></td></tr>
+                   <tr>
+                       <{foreach  $content as $k=>$v}>
+                       <{if $v['cid'] === '1'}>
+                        <td><{$content[$k]['id']}></td>
+                        <td><{nl2br($content[$k]['content'])}></td>
+                    <td class="a-td"><span><a href="?p=back&c=admin&m=handle&sid=<{$smarty.get.sid}>&id=<{$content[$k]['id']}>&a=<{$smarty.get.a}>">修改</a></span><span>
+                        <a href="?p=back&c=admin&m=dele&sid=<{$smarty.get.sid}>&id=<{$content[$k]['id']}>&a=<{$smarty.get.a}>">删除</a></span></td>
+
+                    <{/if}>
+                    <{foreachelse}>
+                        <td>暂无数据</td>
+                    <{/foreach}>
+
+                   </tr>
+                </table>
+                <{/if}>
+            </form>
+        </div>
+        <{elseif $smarty.get.a eq '2'}>
+            <div class="m-c-news">
+                <form action="">
+                    <h3>企业文化</h3>
+                    <p id="add"><a href="?p=back&c=admin&m=add&sid=<{$smarty.get.sid}>&a=<{$smarty.get.a}>">添加</a></p>
+                    <{if !empty($content)}>
+                    <table id="tab">
+                        <tr><td class="ids">编号</td><td>内容</td><td class="a-td"><span>操作</span></td></tr>
+                        <tr>
+                            <{foreach  $content as $k=>$v}>
+                            <{if $v['cid'] === '2'}>
+                            <td><{$content[$k]['id']}></td>
+                            <td><{nl2br($content[$k]['content'])}></td>
+                            <td class="a-td"><span>
+                                <a href="?p=back&c=admin&m=handle&sid=<{$smarty.get.sid}>&id=<{$content[$k]['id']}>&a=<{$smarty.get.a}>">修改</a></span><span>
+                                <a href="?p=back&c=admin&m=dele&sid=<{$smarty.get.sid}>&id=<{$content[$k]['id']}>&a=<{$smarty.get.a}>">删除</a></span>
+                            </td>
+                            <{/if}>
+                            <{foreachelse}>
+                            <td>暂无数据</td>
+                            <{/foreach}>
+                        </tr>
+                    </table>
+                    <{/if}>
+                </form>
+            </div>
+        <{elseif $smarty.get.a eq '3'}>
+        <p style="margin-left:20px;font-weight: bold;">暂无数据</p>
+     <{/if}>
+<{elseif $smarty.get.sid eq '2'}>
+<div class="m-c-news">
+    <form action="?p=back&c=admin&m=dele&sid=<{$smarty.get.sid}>" method="post">
+        <p id="add"><a href="?p=back&c=admin&m=add&sid=<{$smarty.get.sid}>">添加</a>
+            <{if !empty($content)}>
+            <button type="submit" id="btn">批量删除</button></p>
+        <table id="tab">
+            <tr><td class="ids">编号</td><td>标题</td><td class="a-td"><span>操作</span></td></tr>
+            <{foreach $content as $k=>$v}>
+                <tr><td class="ids"><input type="checkbox" name='ids[]' value="<{$v['id']}>"/><{$v['id']}></td>
+                    <td><{$v['title']}></td>
+                    <td class="a-td"><span><a href="?p=back&c=admin&m=handle&sid=<{$smarty.get.sid}>&id=<{$v['id']}>">修改</a></span><span><a href="?p=back&c=admin&m=dele&sid=<{$smarty.get.sid}>&id=<{$v['id']}>">删除</a></span></td></tr>
+            <{/foreach}>
+        </table>
+        <{/if}>
+    </form>
+    <{if isset($html)}>
+    <table id="page">
+        <tr style="text-align:center;"><td colspan="3"><{$html['msg']}></td></tr>
+
+    </table>
+    <{/if}>
+</div>
+<{else}>
+<div class="m-c-news">
+    <form action="?p=back&c=admin&m=dele&sid=<{$smarty.get.sid}>" method="post">
+        <p id="add"><a href="?p=back&c=admin&m=add&sid=<{$smarty.get.sid}>">添加</a>
+            <{if !empty($content)}>
+            <button type="submit" id="btn">批量删除</button></p>
+        <table id="tab">
+            <tr><td class="ids">编号</td><td>需求</td><td>职位</td><td class="a-td"><span>操作</span></td></tr>
+            <{foreach $content as $k=>$v}>
+            <tr><td class="ids"><input type="checkbox" name='ids[]' value="<{$v['id']}>"/><{$v['id']}></td>
+                <td><{$v['title']}></td>
+                <td><{$v['position']}></td>
+                <td class="a-td"><span><a href="?p=back&c=admin&m=handle&sid=<{$smarty.get.sid}>&id=<{$v['id']}>">修改</a></span><span><a href="?p=back&c=admin&m=dele&sid=<{$smarty.get.sid}>&id=<{$v['id']}>">删除</a></span></td></tr>
+            <{/foreach}>
+        </table>
+        <{/if}>
+    </form>
+    <{if isset($html)}>
+    <table id="page">
+        <tr style="text-align:center;"><td colspan="3"><{$html['msg']}></td></tr>
+
+    </table>
+    <{/if}>
+</div>
+<{/if}>
+
+<{include file='../public/_footer.html'}>
